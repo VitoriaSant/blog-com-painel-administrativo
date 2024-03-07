@@ -1,20 +1,26 @@
-const Sequilize = require("sequilize");
+const Sequelize = require("sequelize");
 const Connection = require("../database/connection");
+const Category = require("../categories/category");
 
-const Category = Connection.define('articles',{
+const Article = Connection.define('articles',{
     title:{
-        type: Sequilize.STRING,
+        type: Sequelize.STRING,
         allowNell: false
     },
     slug: {
-        type: Sequilize.STRING,
+        type: Sequelize.STRING,
         allowNell: false
     },
     body: {
-        type: Sequilize.TEXT,
+        type: Sequelize.TEXT,
         allowNell: false
     }
 })
 
+Category.hasMany(Article);//Uma categoria tem muitos artigos
+Article.belongsTo(Category);//Um artigo pertence a uma categoria
+
+//So tirar o comentario que vai criar a tabela no bd de acordo com esse arquivo
+//Article.sync({force: true})
 
 module.exports = Article;
