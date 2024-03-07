@@ -10,6 +10,7 @@ PARA INICIAR UM PROJETO NODE
 - npm install --save body-parser
 - Intalar o express no projeto >> npm install express --save
 - instalar o EJS >> npm install ejs
+- npm install --save slugify
 
 
 PARA A APLICAÇÃO RODAR USAR O NODEMON
