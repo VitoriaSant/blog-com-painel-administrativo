@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const category = require("./category");
 const slugify = require("slugify");
+const Category = require("./category");
 
-router.get("/admin/Categories/new", (req, res) => {
+router.get("/admin/categories/new", (req, res) => {
     res.render("admin/Categories/new");
 });
 
@@ -18,6 +19,14 @@ router.post("/categories/save",(req,res) =>{
      }else{
         res.redirect("/admin/Categories/new")
      }
+
+});
+ 
+router.get("/admin/categories", (req, res) => {
+
+    Category.findAll().then(categories =>{
+        res.render("admin/Categories/index", {categories: categories});
+    });
 });
 
 
